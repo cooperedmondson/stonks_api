@@ -4,15 +4,16 @@ import mechanicalsoup
 
 
 @api_view(['GET'])
-def get_stocks(request):
+def get_stocks(request, stockQuery):
+    print("THIS IS STOCK QUERY", stockQuery)
     browser = mechanicalsoup.StatefulBrowser()
 
     browser.open("https://finance.yahoo.com/")
     browser.select_form()
     browser.get_current_form().print_summary()
 
-    search_term = input("What would you like to search for?")
-
+    # search_term = input("What would you like to search for?")
+    search_term = stockQuery
     browser["yfin-usr-qry"] = search_term
 
 
