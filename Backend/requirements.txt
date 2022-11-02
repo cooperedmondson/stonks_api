@@ -4,8 +4,11 @@ certifi==2022.9.24
 charset-normalizer==2.1.1
 Django==4.1.3
 djangorestframework==3.14.0
+gunicorn==20.1.0
 idna==3.4
 lxml==4.9.1
+Markdown==3.3.4
+martor==1.6.14
 MechanicalSoup==1.2.0
 python-decouple==3.6
 pytz==2022.6
