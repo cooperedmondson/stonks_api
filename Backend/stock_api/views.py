@@ -8,7 +8,7 @@ import requests
 def get_stonks(request, stockQuery):
     try:
         ResponseObject = {}
-        print("THIS IS STOCK QUERY", stockQuery)
+        # print("THIS IS STOCK QUERY", stockQuery)
 
         browser = mechanicalsoup.StatefulBrowser()
         browser.open("https://finance.yahoo.com/")
@@ -19,8 +19,8 @@ def get_stonks(request, stockQuery):
         response = browser.submit_selected()
         new_url = browser.get_url()
         browser.open(str(new_url))
-        print('new url:', browser.get_url())
-        print('my response:', response.text[:500])
+        # print('new url:', browser.get_url())
+        # print('my response:', response.text[:500])
 
         
         headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36'}
@@ -65,7 +65,7 @@ def get_stocks(request, stockTicker):
     try:
         ResponseObject = {}
         page = requests.get(f'https://finance.yahoo.com/quote/{upperStockTicker}?p={upperStockTicker}&.tsrc=fin-srch')
-        print(page)
+        # print(page)
 
         # create object
         soup = BeautifulSoup(page.text, 'html.parser')
@@ -73,7 +73,7 @@ def get_stocks(request, stockTicker):
         # gets the element that holds the currentMarketPrice value
         stock_element_price = soup.find("fin-streamer", {"data-symbol": {upperStockTicker}, "data-field": "regularMarketPrice"})
         stock_price = stock_element_price.contents[0]
-        print(stock_price)
+        # print(stock_price)
 
         # get the stock name
         stock_name_element = soup.find("h1")
